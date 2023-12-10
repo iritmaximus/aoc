@@ -12,66 +12,43 @@ numbers = {
         "zero": 0
         }
 
-class LineStringNums:
-    def __init__(self, line):
-        self.line = line
-        self.line_nums = self.transform_str_ints_to_ints(line)
-        self.num_indexes_list = self.num_indexes()
-
-    def transform_str_ints_to_ints(self, line):
-        list = []
-        num_strings = numbers.keys()
-        for num_string in num_strings:
-            index = line.find(num_string)
-            if line.find(num_string) != -1:
-                list.append({"value": numbers[num_string], "index": index})
-        return list if list else None
-
-    def num_indexes(self) -> list[int]:
-        list = []
-        if not self.line_nums:
-            return []
-        for line_dict in self.line_nums:
-            list.append(line_dict.get("index"))
-        if list:
-            return sorted(list)
-        return []
-
-    def __str__(self):
-        return f"{self.line}: {self.line_nums}"
-
 
 def main():
-    raw_lines = read_input()
-    for line in raw_lines:
-        line_nums = LineStringNums(line)
-        print(line_nums, line)
-
-        for char in line:
-            
-
-
-
-def get_sum_from_int(list):
     result = []
 
-    for line in list:
+    for line in read_input():
         first_num_L = None
         first_num_R = None
 
-        for char in line:
+        for i, char in enumerate(line):
+            num = find_num_string(i, line)
+            
             if char.isnumeric():
                 if not first_num_L:
                     first_num_L = char
                 first_num_R = char
+            if num:
+                if not first_num_L:
+                    first_num_L = num
+                first_num_R = num
+
+
 
         result.append(str(first_num_L) + str(first_num_R))
+
 
     sum = 0
     for line in result:
         sum += int(line)
 
     return sum
+
+
+def find_num_string(start_i, line):
+    for number in numbers.keys():
+        if line.startswith(number, start_i):
+            return numbers[number]
+
 
 
 def read_input():
