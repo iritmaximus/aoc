@@ -1,5 +1,5 @@
 def sol_1():
-    lines = read_input()
+    lines = read_input("test.txt")
     #lines = read_input("example_input.txt")
 
     max_x = len(lines[0])
@@ -27,12 +27,16 @@ def sol_1():
                 num += char
             else:
                 if num:
+                    pass
                     print(f"num: {num:3} - {is_partnumber}")
 
                 if num and is_partnumber:
                     result_1.append(int(num))
                 num = ""
                 is_partnumber = False
+
+        if num and is_partnumber:
+            result_1.append(int(num))
 
     return sum(result_1)
 
