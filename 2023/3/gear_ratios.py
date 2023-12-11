@@ -20,7 +20,7 @@ def sol_1():
         for i, char in enumerate(line):
             if char.isnumeric():
                 number_cords = (i, j)
-                print_cluster_around_cords(number_cords, lines, max_x, max_y)
+                #print_cluster_around_cords(number_cords, lines, max_x, max_y)
                 if not is_partnumber:
                     if check_around_cords(number_cords, lines, max_x, max_y):
                         is_partnumber = True
@@ -40,7 +40,7 @@ def sol_1():
 def check_around_cords(cords, lines, max_x, max_y):
     x, y = cords
     values = [1, 0, -1]
-    print("starting new round")
+    #print("starting new round")
 
     for y_value in values:
         if y-y_value > max_y - 1 or y-y_value < 0:
@@ -51,7 +51,7 @@ def check_around_cords(cords, lines, max_x, max_y):
                 continue
 
             char = lines[y - y_value][x - x_value]
-            print(f"({x-x_value},{y-y_value}): {char}")
+            #print(f"({x-x_value},{y-y_value}): {char}")
             if not char == "." and not char.isnumeric():
                 return True
 
