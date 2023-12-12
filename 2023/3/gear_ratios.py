@@ -46,6 +46,13 @@ def sol_1():
 
         if num and is_partnumber:
             result_1.append(int(num))
+        if gear_cords:
+            for gear in gear_cords:
+                if gears.get(gear):
+                    gears[gear].append(int(num))
+                else:
+                    gears[gear] = [int(num)]
+                print(gear, gears[gear], len(gears[gear]))
 
     result_2 = 0
     for gear in gears:
