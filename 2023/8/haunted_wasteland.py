@@ -72,3 +72,9 @@ def read_input(filename: str="input.txt"):
 
 if __name__ == "__main__":
     print(main())
+    # KeyboardInterrupt
+    # real    6442m56.817s
+    # user    4178m41.144s
+    # sys     2197m3.435s
+
+    # got to 117209331705

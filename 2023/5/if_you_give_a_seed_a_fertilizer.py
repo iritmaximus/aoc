@@ -171,3 +171,6 @@ def read_input(filename: str="input.txt"):
 
 if __name__ == "__main__":
     print(main())
+    #real    5373m55.654s
+    #user    5149m32.909s
+    #sys     103m2.196s
